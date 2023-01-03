@@ -1,8 +1,9 @@
-import { Box, ClickAwayListener, FormControl, MenuItem, Modal, Select, SelectChangeEvent, Typography } from "@mui/material"
-import { ReactNode, useState } from "react"
+import { Box, FormControl, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material"
+import { useState } from "react"
 import { RoadImage, Route } from "./data/types";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Grid from '@mui/material/Unstable_Grid2';
+import ImageModal from "../comps/modal/ImageModal";
 
 export default function Road(props: { route: Route }) {
     const [start, setStart] = useState(props.route.start)
@@ -79,36 +80,3 @@ export default function Road(props: { route: Route }) {
 }
 
 
-function ImageModal(props: {
-    children?: ReactNode
-}) {
-    const [open, setOpen] = useState(false)
-
-    if (!open) {
-        return <span onClick={() => setOpen(true)}>{props.children}</span>
-    }
-
-    return <ClickAwayListener onClickAway={() => setOpen(false)}>
-        <Modal
-            open={open}
-            onClose={() => setOpen(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-            onClick={() => setOpen(false)}
-        >
-            <Box sx={{
-                position: 'absolute' as 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 400,
-                bgcolor: 'background.paper',
-                border: '2px solid #000',
-                boxShadow: 24,
-                textAlign: 'center'
-,            }}>
-                {props.children}
-            </Box>
-        </Modal>
-    </ClickAwayListener>
-}

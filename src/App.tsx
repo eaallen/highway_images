@@ -23,7 +23,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+
 function App() {
+
   return (<>
   <Road route={HIGHWAY6}/>
   </>);
